@@ -14,7 +14,8 @@
                             data-toggle="table"
                             data-search="true"
                             data-pagination="true"
-                            data-search-align="right"
+                            data-search-align="left"
+                            data-search-highlight="true"
                             data-page-size="20"
                             data-show-extended-pagination="true"
                         >

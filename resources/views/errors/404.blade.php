@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-auto">
-            <h3>NEMA REZULTATA</h3>
+            <h3>No results found!</h3>
         </div>
     </div>
 </div>

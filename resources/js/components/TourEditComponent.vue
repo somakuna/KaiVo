@@ -197,19 +197,17 @@
                 ></textarea>
             </div>
         </div>
-
-        <div class="row justify-content-center">
-            <div class="col-auto m-3">
-                <div class="btn-group btn-group" role="group">
-                    <button type="submit" class="btn btn-outline-danger">
-                        <i class="bi bi-arrow-left-square"></i> Discard
-                    </button>
-                    <button type="submit" class="btn btn-outline-primary">
-                        <i class="bi bi-save"></i> Save
-                    </button>
-                </div>
+        <div class="row g-3 mt-1 justify-content-center">
+            <div class="col-auto">
+                <a href="{{ route('/') }}" class="btn btn-lg btn-outline-danger">
+                    <i class="bi-arrow-left-square"></i> Discard </a>
             </div>
-        </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-lg btn-outline-primary">
+                    <i class="bi bi-save"></i> Save
+                </button>
+            </div>
+        </div>  
     </form>
 </template>
 
