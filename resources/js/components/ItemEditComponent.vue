@@ -1,7 +1,7 @@
 <template>
     <form 
         method="POST"
-        :action="route('item.update', itemEdit)"
+        :action="route('item.update', tour)"
         enctype="multipart/form-data"
         autocomplete="on"
     >

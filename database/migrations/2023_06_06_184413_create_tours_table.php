@@ -16,18 +16,19 @@ return new class extends Migration
         Schema::create('tours', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid', 255);
+            $table->integer('number');
             $table->string('guest_name', 255);
             $table->string('guest_address', 255);
             $table->string('guest_phone', 255)->nullable();
             $table->foreignId('tour_service_id')->nullable(); //ID ture
-            $table->integer('adults_amount')->defalut(0);
-            $table->integer('children_amount')->defalut(0);
-            $table->integer('infants_amount')->defalut(0);
+            $table->integer('adults_amount')->default(0);
+            $table->integer('children_amount')->default(0);
+            $table->integer('infants_amount')->default(0);
             $table->date('date')->nullable();
             $table->foreignId('tour_pickup_point_id')->nullable(); //ID pickup point
-            $table->integer('discount')->defalut(0);
+            $table->integer('discount')->default(0);
             $table->decimal('total_price', 12, 2);
-            $table->decimal('paid_amount', 12, 2);
+            $table->decimal('paid_amount', 12, 2)->default(0);
             $table->decimal('rest_to_pay_amount', 12, 2);
             $table->text('note')->nullable();
             $table->foreignId('user_id')->nullable(); //ID usera-agenta

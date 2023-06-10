@@ -49,7 +49,7 @@
       </div>
       <div class="toast-body">
         @foreach ($errors->all() as $error)
-        {{ $error }}</br>
+        {{ $error }}<br>
         @endforeach
       </div>
     </div>

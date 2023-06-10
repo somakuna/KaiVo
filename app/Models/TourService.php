@@ -9,4 +9,9 @@ class TourService extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    // Tours
+    public function tours(){
+        return $this->hasMany(Tour::class);
+    }
 }

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'KayVo') }}</title>
 
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 
@@ -36,16 +36,30 @@
                     @auth
                     <ul class="navbar-nav">
                         <li class="nav-item m-1">
-                            <a class="btn btn-primary text-white" href="{{ url('/') }}"><i class="bi bi-house"></i> POČETNA</a>
+                            <a class="btn btn-secondary text-white" href="{{ url('/') }}"><i class="bi bi-house"></i> Home</a>
                         </li>
                         <li class="nav-item m-1">
-                            <a class="btn btn-warning" href="{{ route('workingOrder.create') }}"><i class="bi bi-plus-square"></i> NOVI NALOG</a>
+                            <a class="btn btn-primary text-white" href="{{ route('tours.create') }}"><i class="bi bi-plus-square"></i> Tour</a>
                         </li>
                         <li class="nav-item m-1">
-                            <form class="d-flex" method="POST" action="{{ route('workingOrder.search') }}" enctype="multipart/form-data">
+                            <a class="btn btn-forest text-white" href="{{ route('tours.create') }}"><i class="bi bi-plus-square"></i> Bike</a>
+                        </li>
+                        <li class="nav-item m-1">
+                            <a class="btn btn-violet text-white" href="{{ route('tours.create') }}"><i class="bi bi-plus-square"></i> Breakfast</a>
+                        </li>
+                        <li class="nav-item m-1">
+                            <form class="d-flex" method="POST" action="{{ route('search') }}" enctype="multipart/form-data">
                                 @csrf
-                                <input name="number" type="number" min="0" class="form-control me-2" placeholder="Broj R.N.">
-                                <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="number" class="form-control" placeholder="Number (ex. 2 or 99)" required /> 
+                                    <select class="form-select" name="type" id="name" required>
+                                        <option value="" selected disabled>Select an option</option>
+                                        <option value="1">Tour Voucher</option>
+                                        <option value="2">Bike Voucher</option>
+                                        <option value="3">Breakfast Voucher</option>
+                                    </select>
+                                    <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+                                </div>
                             </form>
                         </li>
 
@@ -97,6 +111,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.20.2/dist/locale/bootstrap-table-hr-HR.min.js"></script>
 </body>
 </html>

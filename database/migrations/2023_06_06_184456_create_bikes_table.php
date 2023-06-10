@@ -20,20 +20,20 @@ return new class extends Migration
             $table->string('guest_address', 255);
             $table->string('guest_phone', 255)->nullable();
             $table->foreignId('bike_service_id')->nullable(); //ID usluge bicikla
-            $table->integer('bikes_amount')->defalut(0);
+            $table->integer('bikes_amount')->default(0);
             $table->date('pickup_date')->nullable();
             $table->time('pickup_time')->nullable();
             $table->date('return_date')->nullable();
             $table->time('return_time')->nullable();
-            $table->integer('delivery')->defalut(0);
-            $table->integer('baby_seat')->defalut(0);
-            $table->integer('discount')->defalut(0);
+            $table->integer('delivery')->default(0);
+            $table->integer('baby_seat')->default(0);
+            $table->integer('discount')->default(0);
             $table->decimal('total_price', 12, 2);
             $table->decimal('paid_amount', 12, 2);
             $table->decimal('rest_to_pay_amount', 12, 2);
             $table->text('note')->nullable();
             $table->foreignId('user_id')->nullable(); //ID usera-agenta
-            $table->integer('bike_number')->defalut(0);
+            $table->integer('bike_number')->default(0);
             $table->timestamps();
 
             $table->foreign('bike_service_id')

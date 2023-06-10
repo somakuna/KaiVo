@@ -13,13 +13,16 @@ window._ = _;
 
 const app = createApp({}).use(ZiggyVue);
 
-import WorkingOrderComponent from './components/WorkingOrderComponent.vue';
-app.component('workingorder-component', WorkingOrderComponent);
+import TourCreateComponent from './components/TourCreateComponent.vue';
+app.component('tourcreate-component', TourCreateComponent);
 
-import ItemComponent from './components/ItemComponent.vue';
-app.component('item-component', ItemComponent);
+import TourEditComponent from './components/TourEditComponent.vue';
+app.component('touredit-component', TourEditComponent);
 
-import ItemEditComponent from './components/ItemEditComponent.vue';
-app.component('item-edit-component', ItemEditComponent);
+// import ItemComponent from './components/ItemComponent.vue';
+// app.component('item-component', ItemComponent);
+
+// import ItemEditComponent from './components/ItemEditComponent.vue';
+// app.component('item-edit-component', ItemEditComponent);
 
 app.mount('#app');

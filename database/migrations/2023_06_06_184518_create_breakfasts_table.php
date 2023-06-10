@@ -20,18 +20,18 @@ return new class extends Migration
             $table->string('guest_address', 255);
             $table->string('guest_phone', 255)->nullable();
             $table->foreignId('breakfast_service_id')->nullable(); // ID usluge doručka
-            $table->integer('people_amount')->defalut(0);
+            $table->integer('people_amount')->default(0);
             $table->date('first_date')->nullable();
             $table->date('last_date')->nullable();
             $table->integer('days')->nullable();
             $table->foreignId('breakfast_location_id')->nullable(); // ID lokacije doručka
-            $table->integer('discount')->defalut(0);
+            $table->integer('discount')->default(0);
             $table->decimal('total_price', 12, 2);
             $table->decimal('paid_amount', 12, 2);
             $table->decimal('rest_to_pay_amount', 12, 2);
             $table->text('note')->nullable();
             $table->foreignId('user_id')->nullable(); // ID usera-agenta
-            $table->integer('bike_number')->defalut(0);
+            $table->integer('bike_number')->default(0);
             $table->timestamps();
 
             $table->foreign('breakfast_service_id')

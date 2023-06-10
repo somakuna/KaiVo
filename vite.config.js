@@ -20,6 +20,11 @@ export default defineConfig({
             },
         }),
     ],
+    build: {
+        watch: {
+          // https://rollupjs.org/configuration-options/#watch
+        },
+      },
     resolve: {
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',
