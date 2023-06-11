@@ -30,7 +30,7 @@
 								<ul class="dropdown-menu">
 									<li>
 										<a class="dropdown-item" href="{{ route('tours.create') }}">
-											<i class="bi bi-plus-square"></i> Create 
+											<i class="bi bi-plus-lg"></i> Create 
                                         </a>
 									</li>
 									<li>

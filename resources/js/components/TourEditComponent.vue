@@ -17,6 +17,20 @@
                 />
             </div>
             <div class="col-md-6">
+                <label class="form-label text-md-end">Date:</label>
+                <VueDatePicker 
+                    id="date" 
+                    name="date"
+                    v-model="form.date" 
+                    :enable-time-picker="false"
+                    :format="'dd.MM.yyyy.'" 
+                    locale="hr" 
+                    auto-apply
+                    required
+                />
+            </div>
+            
+            <!-- <div class="col-md-6">
                 <label class="form-label text-md-center">Date:</label>
                 <input
                     id="date"
@@ -26,7 +40,7 @@
                     class="form-control bg-white"
                     required
                 />
-            </div>
+            </div> -->
 
             <div class="col-md-4">
                 <label class="form-label text-md-center">Guest Name:</label>

@@ -21,10 +21,8 @@ return new class extends Migration
             $table->string('guest_phone', 255)->nullable();
             $table->foreignId('bike_service_id')->nullable(); //ID usluge bicikla
             $table->integer('bikes_amount')->default(0);
-            $table->date('pickup_date')->nullable();
-            $table->time('pickup_time')->nullable();
-            $table->date('return_date')->nullable();
-            $table->time('return_time')->nullable();
+            $table->datetime('pickup_datetime')->nullable();
+            $table->datetime('return_datetime')->nullable();
             $table->integer('delivery')->default(0);
             $table->integer('baby_seat')->default(0);
             $table->integer('discount')->default(0);

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TourController extends Controller
 {
@@ -55,7 +56,7 @@ class TourController extends Controller
         ]);
 
         DB::beginTransaction();
-        
+        $input['date'] = Carbon::parse($input['date']);
         $input['user_id'] = Auth::user()->id; // osoba koja je unjela podatke
         $input['uuid'] = Str::uuid();
         $tour = Tour::create($input);
@@ -101,7 +102,7 @@ class TourController extends Controller
             'rest_to_pay_amount' => 'required',
             'note' => '',
         ]);
-
+        $input['date'] = Carbon::parse($input['date']);
         $tour->update($input);
         return redirect()->route('tours.show', $tour)->with('success', 'TOUR Voucher is successfully edited.');
     }

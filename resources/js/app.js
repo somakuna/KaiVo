@@ -7,11 +7,15 @@
 import './bootstrap';
 import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m.js';
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 
 
 window._ = _;
 
 const app = createApp({}).use(ZiggyVue);
+
+app.component('VueDatePicker', VueDatePicker);
 
 import TourCreateComponent from './components/TourCreateComponent.vue';
 app.component('tourcreate-component', TourCreateComponent);
@@ -24,5 +28,7 @@ app.component('touredit-component', TourEditComponent);
 
 // import ItemEditComponent from './components/ItemEditComponent.vue';
 // app.component('item-edit-component', ItemEditComponent);
+
+
 
 app.mount('#app');

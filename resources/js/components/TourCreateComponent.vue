@@ -2,6 +2,7 @@
     <form method="POST" :action="route('tours.store')" enctype="multipart/form-data" autocomplete="on">
         <input type="hidden" name="_token" :value="csrf" />
         <!-- @csrf -->
+        
         <div class="row g-3">
             <div class="col-md-6">
                 <label class="form-label" for="number">Number:</label>
@@ -16,6 +17,19 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label text-md-center">Date:</label>
+                <VueDatePicker 
+                    id="date" 
+                    name="date" 
+                    v-model="form.date" 
+                    :enable-time-picker="false"
+                    :format="'dd.MM.yyyy.'" 
+                    locale="hr" 
+                    auto-apply
+                    required
+                />
+            </div>
+            <!-- <div class="col-md-6">
+                <label class="form-label text-md-center">Date:</label>
                 <input
                     id="date"
                     name="date"
@@ -24,7 +38,7 @@
                     class="form-control bg-white"
                     required
                 />
-            </div>
+            </div> -->
 
             <div class="col-md-4">
                 <label class="form-label text-md-center">Guest Name:</label>
@@ -236,7 +250,7 @@ export default {
                 adults_amount: 0,
                 children_amount: 0,
                 infants_amount: 0,
-                date: new Date().toISOString().slice(0,10),
+                date: new Date(),
                 discount: 0,
                 total_price: 0,
                 paid_amount: 0,

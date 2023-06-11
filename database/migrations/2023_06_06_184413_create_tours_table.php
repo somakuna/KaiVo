@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('uuid', 255);
             $table->integer('number');
             $table->string('guest_name', 255);
             $table->string('guest_address', 255);
@@ -32,6 +31,7 @@ return new class extends Migration
             $table->decimal('rest_to_pay_amount', 12, 2);
             $table->text('note')->nullable();
             $table->foreignId('user_id')->nullable(); //ID usera-agenta
+            $table->string('uuid', 255);
             $table->timestamps();
 
             $table->foreign('tour_service_id')
