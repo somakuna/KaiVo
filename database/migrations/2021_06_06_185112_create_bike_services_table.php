@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name', 255);
             $table->decimal('bike_price', 12, 2);
+            $table->string('finish_time', 255);
             $table->timestamps();
         });
     }

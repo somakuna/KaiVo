@@ -170,7 +170,7 @@
                     name="total_price"
                     :value="totalPrice"
                     type="number"
-                    class="form-control fw-bold bg-light"
+                    class="form-control fw-bold"
                     tabindex="-1"
                     required
                     readonly
@@ -195,7 +195,7 @@
                     name="rest_to_pay_amount"
                     :value="restPay"
                     type="number"
-                    class="form-control text-primary fw-bold bg-light"
+                    class="form-control text-primary fw-bold"
                     required
                     readonly
                 />

@@ -111,7 +111,7 @@ class TourController extends Controller
     {
         try {
             $tour->delete($tour);
-            return redirect()->route('home')->with('success', 'TOUR Voucher is successfully deleted.');;
+            return redirect()->route('tours.index')->with('success', 'TOUR Voucher is successfully deleted.');;
         } catch (Exception $e) {
             return back()->with('danger', 'You cannot delete this TOUR Voucher!');
         }

@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@vuepic/vue-datepicker": "^5.2.1",
+        "moment": "^2.29.4",
         "vuejs": "^3.0.1"
     }
 }

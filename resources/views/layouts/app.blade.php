@@ -18,7 +18,7 @@
 		<div id="app">
 			<nav class="navbar navbar-expand-lg bg-white shadow-sm">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#">KayVo</a>
+					<a class="navbar-brand" href="{{ route('home') }}">KayVo</a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
@@ -50,10 +50,14 @@
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Bike</a>
 								<ul class="dropdown-menu">
 									<li>
-										<a class="dropdown-item" href="#">Action</a>
+										<a class="dropdown-item" href="{{ route('bikes.create') }}">
+											<i class="bi bi-plus-lg"></i> Create 
+                                        </a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="#">Another action</a>
+										<a class="dropdown-item" href="{{ route('bikes.index') }}">
+											<i class="bi bi-list-task"></i> List 
+                                        </a>
 									</li>
 									<li>
 										<hr class="dropdown-divider">
@@ -67,10 +71,14 @@
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Breakfast</a>
 								<ul class="dropdown-menu">
 									<li>
-										<a class="dropdown-item" href="#">Action</a>
+										<a class="dropdown-item" href="{{ route('breakfasts.create') }}">
+											<i class="bi bi-plus-lg"></i> Create 
+                                        </a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="#">Another action</a>
+										<a class="dropdown-item" href="{{ route('breakfasts.index') }}">
+											<i class="bi bi-list-task"></i> List 
+                                        </a>
 									</li>
 									<li>
 										<hr class="dropdown-divider">

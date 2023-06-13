@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('breakfasts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('uuid', 255);
+            $table->integer('number');
             $table->string('guest_name', 255);
             $table->string('guest_address', 255);
             $table->string('guest_phone', 255)->nullable();
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->decimal('rest_to_pay_amount', 12, 2);
             $table->text('note')->nullable();
             $table->foreignId('user_id')->nullable(); // ID usera-agenta
-            $table->integer('bike_number')->default(0);
+            $table->string('uuid', 255);
             $table->timestamps();
 
             $table->foreign('breakfast_service_id')

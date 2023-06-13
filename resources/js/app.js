@@ -10,10 +10,12 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m.js';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 
-
 window._ = _;
 
-const app = createApp({}).use(ZiggyVue);
+// const app = createApp({}).use(ZiggyVue);
+
+const app = createApp({});
+app.use(ZiggyVue);
 
 app.component('VueDatePicker', VueDatePicker);
 
@@ -23,12 +25,16 @@ app.component('tourcreate-component', TourCreateComponent);
 import TourEditComponent from './components/TourEditComponent.vue';
 app.component('touredit-component', TourEditComponent);
 
-// import ItemComponent from './components/ItemComponent.vue';
-// app.component('item-component', ItemComponent);
+import BikeCreateComponent from './components/BikeCreateComponent.vue';
+app.component('bikecreate-component', BikeCreateComponent);
 
-// import ItemEditComponent from './components/ItemEditComponent.vue';
-// app.component('item-edit-component', ItemEditComponent);
+import BikeEditComponent from './components/BikeEditComponent.vue';
+app.component('bikeedit-component', BikeEditComponent);
 
+import BreakfastCreateComponent from './components/BreakfastCreateComponent.vue';
+app.component('breakfastcreate-component', BreakfastCreateComponent);
 
+import BreakfastEditComponent from './components/BreakfastEditComponent.vue';
+app.component('breakfastedit-component', BreakfastEditComponent);
 
 app.mount('#app');

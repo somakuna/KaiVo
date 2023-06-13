@@ -17,10 +17,10 @@ class TourServiceFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->title(),
-            'adults_price' => rand(1, 99),
-            'children_price' => rand(1, 99),
-            'infants_price' => rand(1, 99),
+            'name' => fake()->company(),
+            'adults_price' => rand(1, 30),
+            'children_price' => rand(1, 30),
+            'infants_price' => rand(1, 30),
         ];
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('breakfast_services', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 255);
-            $table->decimal('max_hour', 12, 2);
+            $table->decimal('price', 12, 2);
             $table->timestamps();
         });
     }
