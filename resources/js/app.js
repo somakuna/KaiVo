@@ -18,23 +18,39 @@ const app = createApp({});
 app.use(ZiggyVue);
 
 app.component('VueDatePicker', VueDatePicker);
-
+// Tours
 import TourCreateComponent from './components/TourCreateComponent.vue';
 app.component('tourcreate-component', TourCreateComponent);
 
 import TourEditComponent from './components/TourEditComponent.vue';
 app.component('touredit-component', TourEditComponent);
-
+// Bikes
 import BikeCreateComponent from './components/BikeCreateComponent.vue';
 app.component('bikecreate-component', BikeCreateComponent);
 
 import BikeEditComponent from './components/BikeEditComponent.vue';
 app.component('bikeedit-component', BikeEditComponent);
-
+// Breakfasts
 import BreakfastCreateComponent from './components/BreakfastCreateComponent.vue';
 app.component('breakfastcreate-component', BreakfastCreateComponent);
 
 import BreakfastEditComponent from './components/BreakfastEditComponent.vue';
 app.component('breakfastedit-component', BreakfastEditComponent);
+// Reports
+import TourReportComponent from './components/TourReportComponent.vue';
+app.component('tourreport-component', TourReportComponent);
+
+import BreakfastreportComponent from './components/BreakfastreportComponent.vue';
+app.component('breakfastreport-component', BreakfastreportComponent);
+
+import BikeReportComponent from './components/BikeReportComponent.vue';
+app.component('bikereport-component', BikeReportComponent);
+
+import ChartPricesComponent from './components/ChartPricesComponent.vue';
+app.component('chartprices-component', ChartPricesComponent);
+
+import ChartCountComponent from './components/ChartCountComponent.vue';
+app.component('chartcount-component', ChartCountComponent);
+
 
 app.mount('#app');

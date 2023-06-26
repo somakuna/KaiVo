@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('adults_amount')->default(0);
             $table->integer('children_amount')->default(0);
             $table->integer('infants_amount')->default(0);
-            $table->date('date')->nullable();
+            $table->datetime('date')->nullable();
             $table->foreignId('tour_pickup_point_id')->nullable(); //ID pickup point
             $table->integer('discount')->default(0);
             $table->decimal('total_price', 12, 2);
@@ -37,17 +37,17 @@ return new class extends Migration
             $table->foreign('tour_service_id')
                 ->references('id')
                 ->on('tour_services')
-                ->onDelete('set null');
+                ->onDelete('restrict');
 
             $table->foreign('tour_pickup_point_id')
                 ->references('id')
                 ->on('tour_pickup_points')
-                ->onDelete('set null');
+                ->onDelete('restrict');
             
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('set null');
+                ->onDelete('restrict');
         });
     }
 

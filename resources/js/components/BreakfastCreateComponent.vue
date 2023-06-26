@@ -1,5 +1,5 @@
 <template>
-    <form method="POST" :action="route('breakfasts.store')" enctype="multipart/form-data" autocomplete="on">
+    <form method="POST" :action="route('breakfast.store')" enctype="multipart/form-data" autocomplete="on">
         <input type="hidden" name="_token" :value="csrf" />
         <!-- @csrf -->
         
@@ -100,8 +100,6 @@
                     required
                 />
             </div>
-
-
             <div class="col-md-6">
                 <label class="form-label text-md-end">Breakfast service:</label>
                 <select
@@ -120,8 +118,6 @@
                         ></option>
                 </select>
             </div>
-        
-        
             <div class="col-md-6">
                 <label class="form-label text-md-end mb-2">Location:</label>
                 <select
@@ -214,11 +210,11 @@
         </div>
         <div class="row g-3 mt-1 justify-content-center">
             <div class="col-auto">
-                <a href="{{ route('/') }}" class="btn btn-lg btn-outline-danger">
+                <a href="{{ route('home') }}" class="btn  btn-outline-danger">
                     <i class="bi-arrow-left-square"></i> Discard</a>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-lg btn-outline-primary">
+                <button type="submit" class="btn  btn-outline-primary">
                     <i class="bi bi-save"></i> Save
                 </button>
             </div>

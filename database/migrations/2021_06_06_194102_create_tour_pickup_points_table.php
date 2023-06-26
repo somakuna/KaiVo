@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tour_pickup_points', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 255);
+            $table->timestamps();
         });
     }
 

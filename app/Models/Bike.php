@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Bike extends Model
 {
@@ -29,6 +30,21 @@ class Bike extends Model
     // bike service
      public function bikeService() {
         return $this->belongsTo(BikeService::class);
+    }
+
+    public function scopeWhereGivenYear($query, $year)
+    {
+        return $query->whereYear('pickup_datetime', $year);
+    }
+    
+    public function scopeWhereGivenMonth($query, $month)
+    {
+        return $query->whereMonth('pickup_datetime', $month);
+    }
+
+    public function scopeTodayStats($query)
+    {
+        return $query->whereDate('created_at', Carbon::today())->get();
     }
 
 }

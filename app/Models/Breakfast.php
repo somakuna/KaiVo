@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Breakfast extends Model
 {
@@ -38,5 +39,20 @@ class Breakfast extends Model
     // BreakfastLocation point
     public function breakfastLocation() {
         return $this->belongsTo(BreakfastLocation::class);
+    }
+
+    public function scopeWhereGivenYear($query, $year)
+    {
+        return $query->whereYear('first_date', $year);
+    }
+    
+    public function scopeWhereGivenMonth($query, $month)
+    {
+        return $query->whereMonth('first_date', $month);
+    }
+
+    public function scopeTodayStats($query)
+    {
+        return $query->whereDate('created_at', Carbon::today())->get();
     }
 }

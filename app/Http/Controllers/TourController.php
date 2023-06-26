@@ -18,7 +18,7 @@ class TourController extends Controller
         $tours = Tour::orderBy('id', 'desc')
             ->get();
 
-        return view('tours.index', [
+        return view('tour.index', [
             'tours' => $tours,
         ]);
     }
@@ -28,7 +28,7 @@ class TourController extends Controller
         $tourServices  = TourService::get();
         $tourPickupPoints  = TourPickupPoint::get();
         $nextTour = Tour::nextNumber();
-        return view('tours.create', [
+        return view('tour.create', [
             'nextTour' => $nextTour,
             'tourServices' => $tourServices,
             'tourPickupPoints' => $tourPickupPoints,
@@ -66,7 +66,7 @@ class TourController extends Controller
 
     public function show(Tour $tour)
     {   
-        return view('tours.show', [
+        return view('tour.show', [
             'tour' => $tour,
         ]);
     }
@@ -76,7 +76,7 @@ class TourController extends Controller
         $tourServices  = TourService::get();
         $tourPickupPoints  = TourPickupPoint::get();
 
-        return view('tours.edit', [
+        return view('tour.edit', [
             'tour' => $tour,
             'tourServices' => $tourServices,
             'tourPickupPoints' => $tourPickupPoints,
@@ -104,14 +104,14 @@ class TourController extends Controller
         ]);
         $input['date'] = Carbon::parse($input['date']);
         $tour->update($input);
-        return redirect()->route('tours.show', $tour)->with('success', 'TOUR Voucher is successfully edited.');
+        return redirect()->route('tour.show', $tour)->with('success', 'TOUR Voucher is successfully edited.');
     }
 
     public function destroy(Tour $tour)
     {
         try {
             $tour->delete($tour);
-            return redirect()->route('tours.index')->with('success', 'TOUR Voucher is successfully deleted.');;
+            return redirect()->route('tour.index')->with('success', 'TOUR Voucher is successfully deleted.');
         } catch (Exception $e) {
             return back()->with('danger', 'You cannot delete this TOUR Voucher!');
         }

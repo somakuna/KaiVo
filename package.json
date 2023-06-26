@@ -19,7 +19,9 @@
     },
     "dependencies": {
         "@vuepic/vue-datepicker": "^5.2.1",
+        "chart.js": "^4.3.0",
         "moment": "^2.29.4",
+        "vue-chartjs": "^5.2.0",
         "vuejs": "^3.0.1"
     }
 }

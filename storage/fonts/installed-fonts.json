@@ -3,5 +3,10 @@
         "normal": "D:\\xampp\\htdocs\\Kayros_Voucher\\storage\\fonts\/source_sans_pro_normal_795067a87a38390da4828dc16a5e9c69",
         "bold": "D:\\xampp\\htdocs\\Kayros_Voucher\\storage\\fonts\/source_sans_pro_bold_40140bb3ec903bf9128ba0a4ad46b6fa",
         "italic": "source_sans_pro_italic_8bbfb59645dcba2d5d9e111159a32c88"
+    },
+    "exo 2": {
+        "normal": "D:\\xampp\\htdocs\\KaiVo\\storage\\fonts\/exo_2_normal_8eb74d7e898bee57acd51d98b7c2eb91",
+        "bold": "exo_2_bold_05bf152948c0f6aafa9f796fd3988f60",
+        "italic": "D:\\xampp\\htdocs\\KaiVo\\storage\\fonts\/exo_2_italic_e847d52388475a4d4625156c539bc8a8"
     }
 }

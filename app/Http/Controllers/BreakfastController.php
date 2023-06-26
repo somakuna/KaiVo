@@ -18,7 +18,7 @@ class BreakfastController extends Controller
         $breakfasts = Breakfast::orderBy('id', 'desc')
             ->get();
 
-        return view('breakfasts.index', [
+        return view('breakfast.index', [
             'breakfasts' => $breakfasts,
         ]);
     }
@@ -28,7 +28,7 @@ class BreakfastController extends Controller
         $breakfastServices  = BreakfastService::get();
         $breakfastLocations  = BreakfastLocation::get();
         $nextBreakfast = Breakfast::nextNumber();
-        return view('breakfasts.create', [
+        return view('breakfast.create', [
             'nextBreakfast' => $nextBreakfast,
             'breakfastServices' => $breakfastServices,
             'breakfastLocations' => $breakfastLocations,
@@ -69,7 +69,7 @@ class BreakfastController extends Controller
 
     public function show(Breakfast $breakfast)
     {   
-        return view('breakfasts.show', [
+        return view('breakfast.show', [
             'breakfast' => $breakfast,
         ]);
     }
@@ -78,7 +78,7 @@ class BreakfastController extends Controller
     {
         $breakfastServices  = BreakfastService::get();
         $breakfastLocations  = BreakfastLocation::get();
-        return view('breakfasts.edit', [
+        return view('breakfast.edit', [
             'breakfast' => $breakfast,
             'breakfastServices' => $breakfastServices,
             'breakfastLocations' => $breakfastLocations,
@@ -109,14 +109,14 @@ class BreakfastController extends Controller
         $input['user_id'] = Auth::user()->id;
         $input['uuid'] = Str::uuid();
         $breakfast->update($input);
-        return redirect()->route('breakfasts.show', $breakfast)->with('success', 'BREAKFAST Voucher is successfully edited.');
+        return redirect()->route('breakfast.show', $breakfast)->with('success', 'BREAKFAST Voucher is successfully edited.');
     }
 
     public function destroy(Breakfast $breakfast)
     {
         try {
             $breakfast->delete($breakfast);
-            return redirect()->route('breakfasts.index')->with('success', 'BREAKFAST Voucher is successfully deleted.');;
+            return redirect()->route('breakfast.index')->with('success', 'BREAKFAST Voucher is successfully deleted.');
         } catch (Exception $e) {
             return back()->with('danger', $e);
         }

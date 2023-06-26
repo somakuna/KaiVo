@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('breakfast_locations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 255);
+            $table->timestamps();
         });
     }
 

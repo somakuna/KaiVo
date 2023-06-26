@@ -1,5 +1,5 @@
 <template>
-    <form method="POST" :action="route('tours.store')" enctype="multipart/form-data" autocomplete="on">
+    <form method="POST" :action="route('tour.store')" enctype="multipart/form-data" autocomplete="on">
         <input type="hidden" name="_token" :value="csrf" />
         <!-- @csrf -->
         
@@ -21,8 +21,7 @@
                     id="date" 
                     name="date" 
                     v-model="form.date" 
-                    :enable-time-picker="false"
-                    :format="'dd.MM.yyyy.'" 
+                    :format="'dd.MM.yyyy. HH:mm'" 
                     locale="hr" 
                     auto-apply
                     required
@@ -211,11 +210,11 @@
         </div>
         <div class="row g-3 mt-1 justify-content-center">
             <div class="col-auto">
-                <a href="{{ route('/') }}" class="btn btn-lg btn-outline-danger">
+                <a href="{{ route('home') }}" class="btn  btn-outline-danger">
                     <i class="bi-arrow-left-square"></i> Discard</a>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-lg btn-outline-primary">
+                <button type="submit" class="btn  btn-outline-primary">
                     <i class="bi bi-save"></i> Save
                 </button>
             </div>

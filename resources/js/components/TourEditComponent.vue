@@ -1,5 +1,5 @@
 <template>
-    <form method="POST" :action="route('tours.update', tour)" enctype="multipart/form-data" autocomplete="on">
+    <form method="POST" :action="route('tour.update', tour)" enctype="multipart/form-data" autocomplete="on">
         <input type="hidden" name="_token" :value="csrf" />
         <input type="hidden" name="_method" value="PUT">
 
@@ -22,9 +22,9 @@
                     id="date" 
                     name="date"
                     v-model="form.date" 
-                    :enable-time-picker="false"
-                    :format="'dd.MM.yyyy.'" 
+                    :format="'dd.MM.yyyy. HH:mm'" 
                     locale="hr" 
+                    :timezone="'UTC'"
                     auto-apply
                     required
                 />
@@ -213,11 +213,11 @@
         </div>
         <div class="row g-3 mt-1 justify-content-center">
             <div class="col-auto">
-                <a href="{{ route('/') }}" class="btn btn-lg btn-outline-danger">
+                <a href="{{ route('home') }}" class="btn  btn-outline-danger">
                     <i class="bi-arrow-left-square"></i> Discard </a>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-lg btn-outline-primary">
+                <button type="submit" class="btn  btn-outline-primary">
                     <i class="bi bi-save"></i> Save
                 </button>
             </div>
@@ -252,7 +252,7 @@ export default {
                 adults_amount: this.tour.adults_amount,
                 children_amount: this.tour.children_amount,
                 infants_amount: this.tour.infants_amount,
-                date: new Date(this.tour.date).toISOString().slice(0,10),
+                date: new Date(this.tour.date).toISOString(),
                 discount: this.tour.discount,
                 total_price: this.tour.total_price,
                 paid_amount: this.tour.paid_amount,

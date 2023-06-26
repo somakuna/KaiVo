@@ -2,7 +2,7 @@
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
       <div class="toast-header">
-        <strong class="me-auto text-primary"><i class="bi bi-info-circle"></i> Obavijest</strong>
+        <strong class="me-auto text-primary"><i class="bi bi-info-circle"></i> Info</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
@@ -16,7 +16,7 @@
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
       <div class="toast-header">
-        <strong class="me-auto text-warning"><i class="bi bi-exclamation-circle"></i> Upozorenje</strong>
+        <strong class="me-auto text-warning"><i class="bi bi-exclamation-circle"></i> Warning</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
@@ -30,7 +30,7 @@
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
       <div class="toast-header">
-        <strong class="me-auto text-danger"><i class="bi bi-x-circle"></i> Greška</strong>
+        <strong class="me-auto text-danger"><i class="bi bi-x-circle"></i> Error</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">

@@ -37,17 +37,17 @@ return new class extends Migration
             $table->foreign('breakfast_service_id')
                 ->references('id')
                 ->on('breakfast_services')
-                ->onDelete('set null');
+                ->onDelete('restrict');
             
             $table->foreign('breakfast_location_id')
                 ->references('id')
                 ->on('breakfast_locations')
-                ->onDelete('set null');
+                ->onDelete('restrict');
             
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('set null');
+                ->onDelete('restrict');
         });
     }
 

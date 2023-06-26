@@ -37,12 +37,12 @@ return new class extends Migration
             $table->foreign('bike_service_id')
                 ->references('id')
                 ->on('bike_services')
-                ->onDelete('set null');
+                ->onDelete('restrict');
             
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('set null');
+                ->onDelete('restrict');
         });
     }
 

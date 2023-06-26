@@ -17,7 +17,7 @@ class BikeController extends Controller
         $bikes = Bike::orderBy('id', 'desc')
             ->get();
 
-        return view('bikes.index', [
+        return view('bike.index', [
             'bikes' => $bikes,
         ]);
     }
@@ -26,7 +26,7 @@ class BikeController extends Controller
     {
         $bikeServices  = BikeService::get();
         $nextBike = Bike::nextNumber();
-        return view('bikes.create', [
+        return view('bike.create', [
             'nextBike' => $nextBike,
             'bikeServices' => $bikeServices,
         ]);
@@ -65,7 +65,7 @@ class BikeController extends Controller
 
     public function show(Bike $bike)
     {   
-        return view('bikes.show', [
+        return view('bike.show', [
             'bike' => $bike,
         ]);
     }
@@ -74,7 +74,7 @@ class BikeController extends Controller
     {
         $bikeServices  = BikeService::get();
 
-        return view('bikes.edit', [
+        return view('bike.edit', [
             'bike' => $bike,
             'bikeServices' => $bikeServices,
         ]);
@@ -103,14 +103,14 @@ class BikeController extends Controller
         $input['return_datetime'] = Carbon::parse($input['pickup_datetime'])->add($plus_time);
         $bike->update($input);
 
-        return redirect()->route('bikes.show', $bike)->with('success', 'BIKE Voucher is successfully edited.');
+        return redirect()->route('bike.show', $bike)->with('success', 'BIKE Voucher is successfully edited.');
     }
 
     public function destroy(Bike $bike)
     {
         try {
             $bike->delete($bike);
-            return redirect()->route('bikes.index')->with('success', 'BIKE Voucher is successfully deleted.');;
+            return redirect()->route('bike.index')->with('success', 'BIKE Voucher is successfully deleted.');
         } catch (Exception $e) {
             return back()->with('danger', $e);
         }
