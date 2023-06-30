@@ -1,9 +1,8 @@
 <template>
-    <form method="POST" :action="route('bikes.update', bike)" enctype="multipart/form-data" autocomplete="on">
+    <form method="POST" :action="route('bike.update', bike)" enctype="multipart/form-data" autocomplete="on">
         <input type="hidden" name="_token" :value="csrf" />
         <input type="hidden" name="_method" value="PUT">
         <!-- @csrf -->
-
         <div class="row g-3">
             <div class="col-md-6">
                 <label class="form-label" for="number">Number:</label>
