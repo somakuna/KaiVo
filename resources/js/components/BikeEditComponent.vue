@@ -1,9 +1,9 @@
 <template>
-    <form method="POST" :action="route('bike.update', bike)" enctype="multipart/form-data" autocomplete="on">
+    <form method="POST" :action="route('bikes.update', bike)" enctype="multipart/form-data" autocomplete="on">
         <input type="hidden" name="_token" :value="csrf" />
         <input type="hidden" name="_method" value="PUT">
         <!-- @csrf -->
-        
+
         <div class="row g-3">
             <div class="col-md-6">
                 <label class="form-label" for="number">Number:</label>
@@ -95,7 +95,7 @@
             <div class="col-md-4">
                 <label class="form-label text-md-end">Finish time:</label>
                 <input
-                    :value="pickedService.finish_time"
+                    :value="finishTime"
                     type="text"
                     class="form-control"
                     disabled
@@ -186,11 +186,11 @@
         </div>
         <div class="row g-3 mt-1 justify-content-center">
             <div class="col-auto">
-                <a href="{{ route('home') }}" class="btn  btn-outline-danger">
+                <a href="{{ route('/') }}" class="btn btn-lg btn-outline-danger">
                     <i class="bi-arrow-left-square"></i> Discard</a>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn  btn-outline-primary">
+                <button type="submit" class="btn btn-lg btn-outline-primary">
                     <i class="bi bi-save"></i> Save
                 </button>
             </div>
@@ -201,7 +201,7 @@
 <script>
 export default {
     props: {
-        bike: Array,
+        bike: Object,
         bikeServices: Array,
         old: {
             default: {},
@@ -214,7 +214,6 @@ export default {
     data() {
         return {
             csrf: null,
-            pickedService: {},
             form: {
                 number: this.bike.number,
                 guest_name: this.bike.guest_name,
@@ -226,16 +225,15 @@ export default {
                 delivery: this.bike.delivery,
                 baby_seat: this.bike.baby_seat,
                 discount: this.bike.discount,
-                total_price: null,
+                total_price: this.bike.total_price,
                 paid_amount: this.bike.paid_amount,
-                rest_to_pay_amount: '',
+                rest_to_pay_amount: this.bike.rest_to_pay_amount,
                 note: this.bike.note,
             },
         }
     },
     created() {
         this.csrf = document.querySelector('meta[name="csrf-token"]').content;
-        this.pickedService = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id) 
         if (!_.isEmpty(this.old)) {
             this.form = {
                 ...this.form,
@@ -243,16 +241,16 @@ export default {
             };
         }
     },
-    watch: {
-        'form.bike_service_id' (newValue) {
-            this.pickedService = this.bikeServices.find((bike) => bike.id == newValue)
-        },
-    },
     computed: {
         totalPrice() {
-            let bikes = Number(this.form.bikes_amount * this.pickedService.bike_price + this.form.delivery + this.form.baby_seat)
-            let total = bikes - (bikes * this.form.discount / 100)
+            let bike_service = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id),
+                bikes = Number(this.form.bikes_amount * bike_service.bike_price + this.form.delivery + this.form.baby_seat),
+                total = bikes - (bikes * this.form.discount / 100)
             return Number(total).toFixed(2)
+        },
+        finishTime() {
+            let bike_service = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id)
+            return bike_service.finish_time
         },
         restPay() {
             let rest = this.totalPrice - this.form.paid_amount

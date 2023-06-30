@@ -270,7 +270,7 @@ export default {
     },
     computed: {
         totalPrice() {
-            let tour_service = this.tourServices.find((tour) => tour.id === this.form.tour_service_id),
+            let tour_service = this.tourServices.find((tour) => tour.id == this.form.tour_service_id),
                 adults = Number(this.form.adults_amount * tour_service.adults_price),
                 children = Number(this.form.children_amount * tour_service.children_price),
                 infants = Number(this.form.infants_amount * tour_service.infants_price),

@@ -271,7 +271,7 @@ export default {
     },
     computed: {
         totalPrice() {
-            let breakfast_service = this.breakfastServices.find((breakfast) => breakfast.id === this.form.breakfast_service_id),
+            let breakfast_service = this.breakfastServices.find((breakfast) => breakfast.id == this.form.breakfast_service_id),
                 breakfasts = Number(this.form.people_amount * breakfast_service.price * this.dateDiff),
                 total = breakfasts - (breakfasts * this.form.discount / 100)
                 
