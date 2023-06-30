@@ -251,7 +251,9 @@ export default {
             console.log('bike service price ' + bike_service.bike_price)
             console.log('delivery ' + this.form.delivery)
             console.log('baby seat ' + this.form.baby_seat)
+            console.log('bikes ' + bikes)
             console.log('total ' + total.toFixed(2))
+            console.log('total bez tofixed' + total.toFixed(2))
             return total.toFixed(2)
         },
         finishTime() {
