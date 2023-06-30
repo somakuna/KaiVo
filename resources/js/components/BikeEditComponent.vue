@@ -1,5 +1,4 @@
 <template>
-    {{ bike_service }}
     <form method="POST" :action="route('bike.update', bike)" enctype="multipart/form-data" autocomplete="on">
         <input type="hidden" name="_token" :value="csrf" />
         <input type="hidden" name="_method" value="PUT">
@@ -96,7 +95,7 @@
             <div class="col-md-4">
                 <label class="form-label text-md-end">Finish time:</label>
                 <input
-                    :value="pickedService.finish_time"
+                    :value="finishTime"
                     type="text"
                     class="form-control"
                     disabled
@@ -215,7 +214,6 @@ export default {
     data() {
         return {
             csrf: null,
-            pickedService: {},
             form: {
                 number: this.bike.number,
                 guest_name: this.bike.guest_name,
@@ -235,8 +233,6 @@ export default {
         }
     },
     created() {
-        this.pickedService = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id) 
-
         this.csrf = document.querySelector('meta[name="csrf-token"]').content;
 
         if (!_.isEmpty(this.old)) {
@@ -246,16 +242,16 @@ export default {
             };
         }
     },
-    watch: {
-        'form.bike_service_id' (newValue) {
-            this.pickedService = this.bikeServices.find((bike) => bike.id === newValue) || 1;
-        },
-    },
     computed: {
         totalPrice() {
-            let bikes = Number(this.form.bikes_amount * this.pickedService.bike_price + this.form.delivery + this.form.baby_seat)
-            let total = bikes - (bikes * this.form.discount / 100)
+            let bike_service = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id),
+                bikes = Number(this.form.bikes_amount * bike_service.bike_price + this.form.delivery + this.form.baby_seat),
+                total = bikes - (bikes * this.form.discount / 100)
             return Number(total).toFixed(2)
+        },
+        finishTime() {
+            let bike_service = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id)
+            return bike_service.finish_time
         },
         restPay() {
             let rest = this.totalPrice - this.form.paid_amount

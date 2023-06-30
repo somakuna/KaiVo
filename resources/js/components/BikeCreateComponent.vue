@@ -212,7 +212,6 @@ export default {
     data() {
         return {
             csrf: null,
-            bikeService: {},
             form: {
                 number: this.nextBike,
                 guest_name: null,
@@ -241,24 +240,20 @@ export default {
             };
         }
     },
-    watch: {
-        'form.bike_service_id'(newValue) {
-            this.bikeService = this.bikeServices.find((bike) => bike.id === newValue) || {};
-        },
-    },
     computed: {
         totalPrice() {
-            let bikes = Number(this.form.bikes_amount * this.bikeService.bike_price + this.form.delivery + this.form.baby_seat);
-            let total = bikes - (bikes * this.form.discount / 100);
-            return total.toFixed(2);
+            let bike_service = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id),
+                bikes = Number(this.form.bikes_amount * bike_service.bike_price + this.form.delivery + this.form.baby_seat),
+                total = bikes - (bikes * this.form.discount / 100)
+            return Number(total).toFixed(2)
         },
         finishTime() {
-            return this.bikeService.finish_time || '';
+            let bike_service = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id)
+            return bike_service.finish_time
         },
         restPay() {
-            let totalPrice = Number(this.totalPrice); // Remove toFixed(2) to preserve accuracy
-            let rest = totalPrice - this.form.paid_amount;
-            return Number(rest).toFixed(2);
+            let rest = this.totalPrice - this.form.paid_amount
+            return Number(rest).toFixed(2)
         },
     }
 }
