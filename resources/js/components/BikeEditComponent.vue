@@ -1,4 +1,5 @@
 <template>
+    {{ bike_service }}
     <form method="POST" :action="route('bike.update', bike)" enctype="multipart/form-data" autocomplete="on">
         <input type="hidden" name="_token" :value="csrf" />
         <input type="hidden" name="_method" value="PUT">
@@ -202,11 +203,7 @@
 export default {
     props: {
         bike: Object,
-        bikeServices:
-        {
-            Array,
-            required: true,
-        },
+        bikeServices: Array,
         old: {
             default: {},
             required: false,
@@ -248,18 +245,27 @@ export default {
     },
     computed: {
         totalPrice() {
-            let bike_service = this.bikeServices.find((bike) => bike.id === this.form.bike_service_id),
-                bikes = Number(this.form.bikes_amount * bike_service.bike_price + this.form.delivery + this.form.baby_seat),
-                total = bikes - (bikes * this.form.discount / 100)
-            return Number(total).toFixed(2)
+            let bike_service = this.bikeServices.find((bike) => bike.id === this.form.bike_service_id);
+            if (!bike_service) {
+            // Handle the case when bike_service is undefined
+            return 0;
+            }
+            let bikes = Number(this.form.bikes_amount * bike_service.bike_price + this.form.delivery + this.form.baby_seat);
+            let total = bikes - (bikes * this.form.discount / 100);
+            return Number(total).toFixed(2);
         },
         finishTime() {
-            let bike_service = this.bikeServices.find((bike) => bike.id === this.form.bike_service_id)
-            return bike_service.finish_time
+            let bike_service = this.bikeServices.find((bike) => bike.id === this.form.bike_service_id);
+            if (!bike_service) {
+            // Handle the case when bike_service is undefined
+            return '';
+            }
+            return bike_service.finish_time;
         },
         restPay() {
-            let rest = this.totalPrice - this.form.paid_amount
-            return Number(rest).toFixed(2)
+            let totalPrice = this.totalPrice;
+            let rest = totalPrice - this.form.paid_amount;
+            return Number(rest).toFixed(2);
         },
     }
 }
