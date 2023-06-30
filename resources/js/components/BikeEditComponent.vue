@@ -1,4 +1,6 @@
 <template>
+    {{ this.bikeServices.find((bike) => bike.id == this.form.bike_service_id) }}
+
     <form method="POST" :action="route('bike.update', bike)" enctype="multipart/form-data" autocomplete="on">
         <input type="hidden" name="_token" :value="csrf" />
         <input type="hidden" name="_method" value="PUT">
@@ -244,10 +246,10 @@ export default {
     },
     computed: {
         totalPrice() {
-            let bike_service = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id),
-                bikes = Number(this.form.bikes_amount * bike_service.bike_price + this.form.delivery + this.form.baby_seat),
-                total = bikes - (bikes * this.form.discount / 100)
-            return Number(total).toFixed(2)
+            let bike_service = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id)
+            let bikes = Number((this.form.bikes_amount * bike_service.bike_price) + this.form.delivery + this.form.baby_seat)
+            let total = bikes - (bikes * this.form.discount / 100)
+            return total.toFixed(2)
         },
         finishTime() {
             let bike_service = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id)
