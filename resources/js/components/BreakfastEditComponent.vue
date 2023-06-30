@@ -189,6 +189,7 @@
                     type="number"
                     class="form-control bg-white"
                     step="0.01"
+                    min="0"
                     required
                 />
             </div>

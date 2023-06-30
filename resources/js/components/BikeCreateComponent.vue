@@ -157,6 +157,7 @@
                     type="number"
                     class="form-control bg-white"
                     step="0.01"
+                    min="0"
                     required
                 />
             </div>
@@ -241,7 +242,7 @@ export default {
     computed: {
         totalPrice() {
             let bike_service = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id),
-                bikes = Number(this.form.bikes_amount * bike_service.bike_price + this.form.delivery + this.form.baby_seat),
+                bikes = Number(this.form.bikes_amount) * Number(bike_service.bike_price) + Number(this.form.delivery) + Number(this.form.baby_seat),
                 total = bikes - (bikes * this.form.discount / 100)
             return Number(total).toFixed(2)
         },
