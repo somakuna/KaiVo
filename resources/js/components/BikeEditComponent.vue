@@ -201,7 +201,7 @@
 <script>
 export default {
     props: {
-        bike: Object,
+        bike: Array,
         bikeServices: Array,
         old: {
             default: {},
