@@ -244,26 +244,19 @@ export default {
         }
     },
     computed: {
+        bikeService() {
+            return this.bikeServices.find((bike) => bike.id === this.form.bike_service_id) || {};
+        },
         totalPrice() {
-            let bike_service = this.bikeServices.find((bike) => bike.id === this.form.bike_service_id);
-            if (!bike_service) {
-            // Handle the case when bike_service is undefined
-            return 0;
-            }
-            let bikes = Number(this.form.bikes_amount * bike_service.bike_price + this.form.delivery + this.form.baby_seat);
+            let bikes = Number(this.form.bikes_amount * this.bikeService.bike_price + this.form.delivery + this.form.baby_seat);
             let total = bikes - (bikes * this.form.discount / 100);
-            return Number(total).toFixed(2);
+            return total.toFixed(2);
         },
         finishTime() {
-            let bike_service = this.bikeServices.find((bike) => bike.id === this.form.bike_service_id);
-            if (!bike_service) {
-            // Handle the case when bike_service is undefined
-            return '';
-            }
-            return bike_service.finish_time;
+            return this.bikeService.finish_time || '';
         },
         restPay() {
-            let totalPrice = this.totalPrice;
+            let totalPrice = Number(this.totalPrice); // Remove toFixed(2) to preserve accuracy
             let rest = totalPrice - this.form.paid_amount;
             return Number(rest).toFixed(2);
         },
