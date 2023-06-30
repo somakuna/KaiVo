@@ -95,7 +95,7 @@
             <div class="col-md-4">
                 <label class="form-label text-md-end">Finish time:</label>
                 <input
-                    :value="finishTime"
+                    :value="pickedService.finish_time"
                     type="text"
                     class="form-control"
                     disabled
@@ -214,6 +214,7 @@ export default {
     data() {
         return {
             csrf: null,
+            pickedService: {},
             form: {
                 number: this.bike.number,
                 guest_name: this.bike.guest_name,
@@ -234,7 +235,7 @@ export default {
     },
     created() {
         this.csrf = document.querySelector('meta[name="csrf-token"]').content;
-
+        this.pickedService = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id) 
         if (!_.isEmpty(this.old)) {
             this.form = {
                 ...this.form,
@@ -242,16 +243,16 @@ export default {
             };
         }
     },
+    watch: {
+        'form.bike_service_id' (newValue) {
+            this.pickedService = this.bikeServices.find((bike) => bike.id == newValue)
+        },
+    },
     computed: {
         totalPrice() {
-            let bike_service = this.bikeServices.find((x) => x.id == this.form.bike_service_id)
-            let bikes = Number((this.form.bikes_amount * bike_service.bike_price) + this.form.delivery + this.form.baby_seat)
+            let bikes = Number(this.form.bikes_amount * this.pickedService.bike_price + this.form.delivery + this.form.baby_seat)
             let total = bikes - (bikes * this.form.discount / 100)
-            return total.toFixed(2)
-        },
-        finishTime() {
-            let bike_service = this.bikeServices.find((x) => x.id == this.form.bike_service_id)
-            return bike_service.finish_time
+            return Number(total).toFixed(2)
         },
         restPay() {
             let rest = this.totalPrice - this.form.paid_amount
