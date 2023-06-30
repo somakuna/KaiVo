@@ -202,7 +202,11 @@
 export default {
     props: {
         bike: Object,
-        bikeServices: Array,
+        bikeServices:
+        {
+            Array,
+            required: true,
+        },
         old: {
             default: {},
             required: false,
