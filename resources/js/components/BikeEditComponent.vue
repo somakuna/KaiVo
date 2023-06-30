@@ -247,14 +247,6 @@ export default {
             let bike_service = this.bikeServices.find((x) => x.id == this.form.bike_service_id)
             let bikes = Number((this.form.bikes_amount * bike_service.bike_price) + this.form.delivery + this.form.baby_seat)
             let total = bikes - (bikes * this.form.discount / 100)
-            console.log(bike_service)
-            console.log('bikes amount ' + this.form.bikes_amount)
-            console.log('bike service price ' + bike_service.bike_price)
-            console.log('delivery ' + this.form.delivery)
-            console.log('baby seat ' + this.form.baby_seat)
-            console.log('bikes ' + bikes)
-            console.log('total ' + total.toFixed(2))
-            console.log('total bez tofixed' + total.toFixed(2))
             return total.toFixed(2)
         },
         finishTime() {
