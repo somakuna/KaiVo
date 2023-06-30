@@ -1,5 +1,5 @@
 <template>
-    {{ bike_service }}
+    {{ bike }}
     <form method="POST" :action="route('bike.update', bike)" enctype="multipart/form-data" autocomplete="on">
         <input type="hidden" name="_token" :value="csrf" />
         <input type="hidden" name="_method" value="PUT">
