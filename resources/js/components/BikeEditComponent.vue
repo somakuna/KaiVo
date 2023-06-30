@@ -226,9 +226,9 @@ export default {
                 delivery: this.bike.delivery,
                 baby_seat: this.bike.baby_seat,
                 discount: this.bike.discount,
-                total_price: this.bike.total_price,
+                total_price: null,
                 paid_amount: this.bike.paid_amount,
-                rest_to_pay_amount: this.bike.rest_to_pay_amount,
+                rest_to_pay_amount: '',
                 note: this.bike.note,
             },
         }
