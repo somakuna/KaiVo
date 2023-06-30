@@ -215,7 +215,6 @@ export default {
     data() {
         return {
             csrf: null,
-            bikeService: {},
             form: {
                 number: this.bike.number,
                 guest_name: this.bike.guest_name,
@@ -244,12 +243,10 @@ export default {
             };
         }
     },
-    watch: {
-        'form.bike_service_id'(newValue) {
-            this.bikeService = this.bikeServices.find((bike) => bike.id === newValue) || {};
-        },
-    },
     computed: {
+        bikeService() {
+            return this.bikeServices.find((bike) => bike.id === this.form.bike_service_id) || {};
+        },
         totalPrice() {
             let bikes = Number(this.form.bikes_amount * this.bikeService.bike_price + this.form.delivery + this.form.baby_seat);
             let total = bikes - (bikes * this.form.discount / 100);
