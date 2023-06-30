@@ -235,7 +235,7 @@ export default {
         }
     },
     created() {
-        this.pickedService = this.bikeServices.find((bike) => bike.id === this.form.bike_service_id)
+        this.pickedService = this.bikeServices.find((bike) => bike.id == this.form.bike_service_id) 
 
         this.csrf = document.querySelector('meta[name="csrf-token"]').content;
 
