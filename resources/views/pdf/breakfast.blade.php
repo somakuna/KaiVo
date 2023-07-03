@@ -54,7 +54,7 @@
                 <img src="img/logo.png" style="max-height:60px;" alt="Logo">
             </td>
             <td style="text-align: right;">
-                <h2>Breakfast Voucher</h2>
+                <h2>Breakfast Voucher #{{ $breakfast->number }}</h2>
             </td>
         </tr>
     </table>

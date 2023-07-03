@@ -54,7 +54,7 @@
                 <img src="img/logo.png" style="max-height:60px;" alt="Logo">
             </td>
             <td style="text-align: right;">
-                <h2>Tour Voucher</h2>
+                <h2>Tour Voucher #{{ $tour->number }}</h2>
             </td>
         </tr>
     </table>
