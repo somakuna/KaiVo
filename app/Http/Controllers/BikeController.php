@@ -14,7 +14,7 @@ class BikeController extends Controller
 {
     public function index()
     {
-        $bikes = Bike::orderBy('id', 'desc')
+        $bikes = Bike::with('bikeService')->orderBy('id', 'desc')
             ->get();
 
         return view('bike.index', [

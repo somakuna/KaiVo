@@ -22,7 +22,7 @@ Auth::routes([
 
 Route::middleware('auth')->group(function () 
 {
-    Route::get('/{year?}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/{year?}', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->defaults('year', now('Y'));;
     # tours
     Route::get('/tour/list', [App\Http\Controllers\TourController::class, 'index'])->name('tour.index');
     Route::get('/tour/create', [App\Http\Controllers\TourController::class, 'create'])->name('tour.create');

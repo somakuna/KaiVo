@@ -41,14 +41,9 @@ class Breakfast extends Model
         return $this->belongsTo(BreakfastLocation::class);
     }
 
-    public function scopeWhereGivenYear($query, $year)
+    public function scopeWhereGivenDate($query, $year, $month)
     {
-        return $query->whereYear('first_date', $year);
-    }
-    
-    public function scopeWhereGivenMonth($query, $month)
-    {
-        return $query->whereMonth('first_date', $month);
+        return $query->whereYear('first_date', $year)->whereMonth('first_date', $month);
     }
 
     public function scopeTodayStats($query)

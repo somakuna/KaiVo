@@ -32,19 +32,14 @@ class Bike extends Model
         return $this->belongsTo(BikeService::class);
     }
 
-    public function scopeWhereGivenYear($query, $year)
+    public function scopeWhereGivenDate($query, $year, $month)
     {
-        return $query->whereYear('pickup_datetime', $year);
-    }
-    
-    public function scopeWhereGivenMonth($query, $month)
-    {
-        return $query->whereMonth('pickup_datetime', $month);
+        return $query->whereYear('pickup_datetime', $year)->whereMonth('pickup_datetime', $month);
     }
 
     public function scopeTodayStats($query)
     {
-        return $query->whereDate('created_at', Carbon::today())->get();
+        return $query->whereDate('created_at', Carbon::today());
     }
 
 }

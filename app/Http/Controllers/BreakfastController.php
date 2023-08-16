@@ -15,7 +15,7 @@ class BreakfastController extends Controller
 {
     public function index()
     {
-        $breakfasts = Breakfast::orderBy('id', 'desc')
+        $breakfasts = Breakfast::with('breakfastService', 'breakfastLocation')->orderBy('id', 'desc')
             ->get();
 
         return view('breakfast.index', [

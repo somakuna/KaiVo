@@ -23,7 +23,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($year = 2023)
+    public function index ( $year )
     {
         if(!$year) $year = now()->format('Y');
 
@@ -33,22 +33,25 @@ class HomeController extends Controller
         $bikeMonthCount = collect([]);
         $breakfastMonthTotalPrices = collect([]);
         $breakfastMonthCount = collect([]);
-        
+
         for ($i=1; $i <= 12; $i++)
         {
             #tours
-            $tourPrice = (float) Tour::WhereGivenYear($year)->WhereGivenMonth($i)->sum('total_price');
-            $tourCount = Tour::WhereGivenYear($year)->whereGivenMonth($i)->count();
+            $tours = Tour::WhereGivenDate($year, $i)->get();
+            $tourPrice = (float) $tours->sum('total_price');
+            $tourCount = $tours->count();
             $tourMonthTotalPrices->push($tourPrice);
             $tourMonthCount->push($tourCount);
             #bikes
-            $bikePrice = (float) Bike::WhereGivenYear($year)->whereGivenMonth($i)->sum('total_price');
-            $bikeCount = Bike::WhereGivenYear($year)->whereGivenMonth($i)->count();
+            $bikes = Bike::WhereGivenDate($year, $i)->get();
+            $bikePrice = (float) $bikes->sum('total_price');
+            $bikeCount = $bikes->count();
             $bikeMonthTotalPrices->push($bikePrice);
             $bikeMonthCount->push($bikeCount);
             #breakfasts
-            $breakfastPrice = (float) Breakfast::WhereGivenYear($year)->whereGivenMonth($i)->sum('total_price');
-            $breakfastCount = Breakfast::WhereGivenYear($year)->whereGivenMonth($i)->count();
+            $breakfasts = Breakfast::WhereGivenDate($year, $i)->get();
+            $breakfastPrice = (float) $breakfasts->sum('total_price');
+            $breakfastCount = $breakfasts->count();
             $breakfastMonthTotalPrices->push($breakfastPrice);
             $breakfastMonthCount->push($breakfastCount);
         }

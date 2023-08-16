@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Support\Carbon;
 
 class Tour extends Model
@@ -40,14 +41,9 @@ class Tour extends Model
         return $this->belongsTo(TourPickupPoint::class);
     }
 
-    public function scopeWhereGivenYear($query, $year)
+    public function scopeWhereGivenDate($query, $year, $month)
     {
-        return $query->whereYear('date', $year);
-    }
-    
-    public function scopeWhereGivenMonth($query, $month)
-    {
-        return $query->whereMonth('date', $month);
+        return $query->whereYear('date', $year)->whereMonth('date', $month);
     }
 
     public function scopeTodayStats($query)
