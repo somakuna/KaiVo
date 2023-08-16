@@ -8,7 +8,7 @@
 					<strong>SHOW</strong> BREAKFAST Voucher [#{{$breakfast->number}}]
 				</div>
 				<div class="card-body">
-					<div class="row row-cols-1 row-cols-md-3">
+					<div class="row row-cols-1 row-cols-md-3 g-3">
 						<div class="col">
 							<div class="card h-100 mb-2 rounded-3 shadow-sm">
 								<div class="card-header py-2">
